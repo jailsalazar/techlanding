@@ -1,82 +1,219 @@
 <template>
   <v-container>
-    <v-layout text-center wrap>
+    <v-layout justify-space-between align-space-between column fill-height>
       <!-- SECTION ONE -->
-      <v-layout>
-        <v-flex mb-4>
-          <h1 class="headline"><h1 class="bold">Elevate</h1> Your Practice <h1 class="bold">Effectively</h1></h1>
-          
-          <p class="subheading font-weight-regular">
-            Add revenue to your practice. Utilize one platform
-            and our technology to take your practice to the next
-            level. Simpatra has created marketing tools and packages
-            that work for you while you care for your patients.
-          </p>
-        </v-flex>
-      </v-layout>
+      <v-flex lg12>
+        <v-layout row class="section">
+          <v-flex lg6>
+            <v-card flat style="padding-top:90px;">
+              <v-card-title class="headline">
+                <span>
+                  <span class="black">Elevate</span> Your
+                  <br />Practice
+                  <span class="black">Effectively</span>
+                </span>
+              </v-card-title>
 
-      <!-- SECTION TWO   -->
-      <v-layout>
-        <v-flex mb-5 xs12>
-          <h1 class="headline">The Power of the Directory</h1>
-          <h2 class="subline bold">Traffice Source with Paid Advertising</h2>
-          <p>reperio bea et volorio dolenitia verrum quodit et, qua Lum is maxim aceribus. Duci tem quo blaturi volor alitati</p>
-          <h2 class="subline bold">Your Profile: Tell Them Who You Are!</h2>
-          <p>reperio bea et volorio dolenitia verrum quodit et, qua Lum is maxim aceribus. Duci tem quo blaturi volor alitati</p>
-          <h2 class="subline bold">Reach Out: Generate New Leads</h2>
-          <p>reperio bea et volorio dolenitia verrum quodit et, qua Lum is maxim aceribus. Duci tem quo blaturi volor alitati</p>
-        </v-flex>
-
-        <v-flex mb-5 xs12>
-          <v-img src="../assets/Doctor.jpeg"></v-img>
-        </v-flex>
-
-        <v-flex mb-5 xs12>
-          <v-img src="../assets/Computer_Graphic.png"></v-img>
-        </v-flex>
-      </v-layout>
-
-      <!-- SECTION THREE: PRODUCTS -->
-      <v-flex mb-5 xs12>
-        <h2 class="headline font-weight-bold mb-3">What's next?</h2>
+              <v-card-text class="text">
+                Add revenue to your practice. Utilize one platform
+                and our technology to take your practice to the next
+                level. Simpatra has created marketing tools and packages
+                that work for you while you care for your patients.
+              </v-card-text>
+            </v-card>
+          </v-flex>
+        </v-layout>
       </v-flex>
 
+      <!-- SECTION TWO   -->
+      <v-flex lg12>
+        <v-layout row class="section">
+          <v-flex lg5 style="padding-top: 120px;">
+            <v-card flat>
+              <v-card-title class="secondary-headline">
+                The Power
+                <br />of the Directory
+              </v-card-title>
+
+              <v-list-item three-item v-for="headline in headlinesOne" :key="headline.title">
+                <v-list-item-content>
+                  <v-list-item-title class="subline bold">{{ headline.title }}</v-list-item-title>
+                  <v-list-item-subtitle
+                    style="padding-top:5px; padding-bottom:5px"
+                  >eperio bea et volorio dolenitia verrum quodit et, qua</v-list-item-subtitle>
+                  <v-list-item-subtitle>Lum is maxim aceribus. Duci tem quo blaturi volor alitati</v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </v-card>
+          </v-flex>
+
+          <v-flex lg7>
+            <v-img src="../assets/Doctor.jpeg" width="1000" height="1000"></v-img>
+          </v-flex>
+
+          <!-- <v-flex xs12>
+            <v-img src="../assets/Computer_Graphic.png" max-width="200" max-height="200"></v-img>
+          </v-flex>-->
+        </v-layout>
+      </v-flex>
+
+      <v-divider />
+      <!-- SECTION THREE: PRODUCTS -->
+      <!-- <v-layout row style="min-height: 500px; padding-top: 50px;"> -->
+      <!-- <v-carousel>
+          <v-carousel-item v-for="product in products" :key="product.id">
+            <v-layout align-center justify-center row fill-height>
+              <v-flex lg6>
+                <v-img
+                  :src="product.images[0].url"
+                  max-width="200"
+                  max-height="200"
+                  aspect-ratio="1"
+                ></v-img>
+              </v-flex>
+
+              <v-flex lg6>
+                <span>{{ product.sku }}</span>
+                <span>{{ product.name }}</span>
+                <span>{{ product.sku }}</span>
+                <span>{{ product.manufacturer }}</span>
+                <span>About the Product</span>
+                <p>{{ product.description }}</p>
+                <p>{{ product.price }}</p>
+                <v-btn>ADD TO CART</v-btn>
+              </v-flex>
+            </v-layout>
+          </v-carousel-item>
+      </v-carousel>-->
+      <!-- </v-layout> -->
+
       <!-- SECTION FOUR -->
-      <v-layout>
-        <v-flex mb-5 xs12>
-          <h1 class="headline">Want to Drive Traffic to Your Practice?</h1>
-          <h2 class="subline bold">Generate Traffic</h2>
-          <p>reperio bea et volorio dolenitia verrum quodit et, qua Lum is maxim aceribus. Duci tem quo blaturi volor alitati</p>
-          <h2 class="subline bold">Utilize Our Bots!</h2>
-          <p>reperio bea et volorio dolenitia verrum quodit et, qua Lum is maxim aceribus. Duci tem quo blaturi volor alitati</p>
-          <h2 class="subline bold">Audience Analytics</h2>
-          <p>reperio bea et volorio dolenitia verrum quodit et, qua Lum is maxim aceribus. Duci tem quo blaturi volor alitati</p>
+      <v-layout row class="section" style="padding-top: 100px;">
+        <v-flex lg6>
+          <v-card flat>
+            <v-card-title class="secondary-headline">Want to Drive Traffic to Your Practice?</v-card-title>
+
+            <v-list-item three-item v-for="headline in headlinesTwo" :key="headline.title">
+              <v-list-item-content>
+                <v-list-item-title class="subline bold">{{ headline.title }}</v-list-item-title>
+                <v-list-item-subtitle
+                  style="padding-top:5px; padding-bottom:5px"
+                >eperio bea et volorio dolenitia verrum quodit et, qua</v-list-item-subtitle>
+                <v-list-item-subtitle>Lum is maxim aceribus. Duci tem quo blaturi volor alitati</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-card>
         </v-flex>
 
-        <v-flex mb-5 xs12>
-          <v-img src="../assets/DriveTraffic.png"></v-img>
+        <v-flex lg6>
+          <v-img src="../assets/DriveTraffic.png" max-width="450" max-height="450"></v-img>
         </v-flex>
       </v-layout>
 
       <!-- SECTION FIVE -->
-      <v-layout>
-        <v-flex mb-4>
-          <h1><h1 class="bold">Powerful</h1> Tools that Work <h1 class="bold">for You!</h1></h1>
-          <p class="bold">
-            JOIN TODAY AT $499 MONTHLY
-          </p>
+      <v-layout
+        column
+        class="section center"
+        align-center
+        justify-center
+        style="padding-top: 100px;"
+      >
+        <span class="headline">
+          <span class="black">Powerful</span> Tools
+          <br />that Work
+          <span class="black">for You!</span>
+        </span>
+        <span class="bold">JOIN TODAY AT $499 MONTHLY</span>
+        <v-flex style="padding-top: 30px;">
+          <v-btn depressed large dark style="background-color: #871385; font-weight: 700;" min-height="57px" min-width="217px">GET STARTED</v-btn>
         </v-flex>
-
-        <v-btn>GET STARTED</v-btn>
       </v-layout>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
+export default {
+  name: "Home",
+  data() {
+    return {
+      headlinesOne: [
+        { title: "Traffice Source with Paid Advertising" },
+        { title: "Your Profile: Tell Them Who You Are!" },
+        { title: "Reach Out: Generate New Leads" }
+      ],
+      headlinesTwo: [
+        { title: "Generate Traffic" },
+        { title: "Utilize Our Bots!" },
+        { title: "Audience Analytics" }
+      ]
+    };
+  },
+
+  mounted() {
+    this.$store.dispatch("getProducts");
+  },
+  computed: {
+    ...mapState(["products"])
+  }
+};
 </script>
 
 <style>
+.rotateOrange {
+  z-index: 0;
+}
 
+/* .headline,
+.subline,
+.text,
+.secondary-headline {
+  font-weight: 300;
+  padding-left: 50px;
+} */
+
+/* .subline {
+  line-height: 1.5;
+  font-size: 1rem;
+} */
+
+.text,
+.subline {
+  line-height: 1.8 !important;
+  font-size: 1.2rem !important;
+}
+
+.headline {
+  /* text-align: justify; */
+  font-size: 3.5rem !important;
+  padding-bottom: 20px !important;
+  line-height: 1.2 !important;
+}
+
+.secondary-headline {
+  font-size: 3rem !important;
+  line-height: 1.2 !important;
+  padding-bottom: 20px !important;
+}
+
+.black {
+  font-weight: 900 !important;
+}
+
+.bold {
+  font-weight: 700 !important;
+}
+
+.section {
+  min-height: 500px;
+  padding-top: 50px;
+  padding-left: 25px;
+}
+
+.center {
+  text-align: center;
+}
 </style>
 
