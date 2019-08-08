@@ -1,31 +1,54 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/cart">Cart</router-link>
-    </div>
-    <router-view/>
+    <v-toolbar light flat src="../src/assets/OrangeBar.jpg">
+      <v-img src="../src/assets/Simpatra_Logo.png" max-width="100" max-height="50"></v-img>
+
+      <v-spacer></v-spacer>
+
+      <v-toolbar-items>
+        <v-btn text>
+          <router-link to="/">Features</router-link>
+        </v-btn>
+        <v-btn text>
+          <router-link to="/">Pricing</router-link>
+        </v-btn>
+        <v-btn text>
+          <router-link to="/cart">
+            Your Cart
+            <v-img src="../src/assets/CartIcon.png" max-width="15" max-height="15"></v-img>
+          </router-link>
+        </v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
+    <!-- <v-img src="../src/assets/OrangeBar.jpg"></v-img> -->
+    <router-view />
   </div>
 </template>
 
+<script>
+export default {
+  name: "App",
+  components: {},
+  data: () => ({
+    //
+  })
+};
+</script>
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+html,
+body {
+  font-family: "Montserrat", sans-serif;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.bold {
+  font-weight: 700;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.headline {
+  font-weight: 300;
 }
 </style>
+
