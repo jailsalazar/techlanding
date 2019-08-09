@@ -59,36 +59,12 @@
 
       <v-divider />
       <!-- SECTION THREE: PRODUCTS -->
-      <!-- <v-layout row style="min-height: 500px; padding-top: 50px;"> -->
-      <!-- <v-carousel>
-          <v-carousel-item v-for="product in products" :key="product.id">
-            <v-layout align-center justify-center row fill-height>
-              <v-flex lg6>
-                <v-img
-                  :src="product.images[0].url"
-                  max-width="200"
-                  max-height="200"
-                  aspect-ratio="1"
-                ></v-img>
-              </v-flex>
-
-              <v-flex lg6>
-                <span>{{ product.sku }}</span>
-                <span>{{ product.name }}</span>
-                <span>{{ product.sku }}</span>
-                <span>{{ product.manufacturer }}</span>
-                <span>About the Product</span>
-                <p>{{ product.description }}</p>
-                <p>{{ product.price }}</p>
-                <v-btn>ADD TO CART</v-btn>
-              </v-flex>
-            </v-layout>
-          </v-carousel-item>
-      </v-carousel>-->
-      <!-- </v-layout> -->
+      <v-flex lg9>
+        <product-slider/>
+      </v-flex>
 
       <!-- SECTION FOUR -->
-      <v-layout row class="section" style="padding-top: 100px;">
+      <v-layout row class="section" style="padding-top: 60px;">
         <v-flex lg6>
           <v-card flat>
             <v-card-title class="secondary-headline">Want to Drive Traffic to Your Practice?</v-card-title>
@@ -125,7 +101,14 @@
         </span>
         <span class="bold">JOIN TODAY AT $499 MONTHLY</span>
         <v-flex style="padding-top: 30px;">
-          <v-btn depressed large dark style="background-color: #871385; font-weight: 700;" min-height="57px" min-width="217px">GET STARTED</v-btn>
+          <v-btn
+            depressed
+            large
+            dark
+            style="background-color: #871385; font-weight: 700;"
+            min-height="57px"
+            min-width="217px"
+          >GET STARTED</v-btn>
         </v-flex>
       </v-layout>
     </v-layout>
@@ -134,6 +117,7 @@
 
 <script>
 import { mapState } from "vuex";
+import ProductSlider from "../components/ProductSlider.vue";
 
 export default {
   name: "Home",
@@ -151,6 +135,8 @@ export default {
       ]
     };
   },
+  
+  components: { ProductSlider },
 
   mounted() {
     this.$store.dispatch("getProducts");
@@ -166,19 +152,6 @@ export default {
   z-index: 0;
 }
 
-/* .headline,
-.subline,
-.text,
-.secondary-headline {
-  font-weight: 300;
-  padding-left: 50px;
-} */
-
-/* .subline {
-  line-height: 1.5;
-  font-size: 1rem;
-} */
-
 .text,
 .subline {
   line-height: 1.8 !important;
@@ -186,7 +159,6 @@ export default {
 }
 
 .headline {
-  /* text-align: justify; */
   font-size: 3.5rem !important;
   padding-bottom: 20px !important;
   line-height: 1.2 !important;
@@ -214,6 +186,21 @@ export default {
 
 .center {
   text-align: center;
+}
+
+.slider {
+  width: auto;
+  height: 600px !important;
+  margin: 50px !important;
+}
+.image {
+  align-self: center;
+  vertical-align: center;
+  margin: 45px;
+}
+
+.orange {
+  color: #ef6008;
 }
 </style>
 

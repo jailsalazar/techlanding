@@ -7,17 +7,24 @@ Vue.use (Vuex);
 export default new Vuex.Store ({
   state: {
     products: [],
-    cart: []
+    cart: [],
   },
   mutations: {
-    setProducts(state, products) {
+    setProducts (state, products) {
       state.products = products;
     },
-    setCart(state, item) {
-      if(!state.cart.some(cartItem => cartItem.id === item.id)){
+    setCart (state, item) {
+      if (!state.cart.some (cartItem => cartItem.id === item.id)) {
+        item.quantity++;
         state.cart.push(item);
+      } else {
+        state.cart.map (cartItem => {
+          if(cartItem.id === item.id) {
+           cartItem.quantity++;
+          }
+        });
       }
-    }
+    },
   },
   actions: {
     getProducts({commit}) {
@@ -25,12 +32,12 @@ export default new Vuex.Store ({
         .get ('https://my-json-server.typicode.com/simpatra/mockapi/products')
         .then (response => response.data)
         .then (products => {
-          products.map(item => (item.quantity = 0));
+          products.map (item => (item.quantity = 0));
           commit ('setProducts', products);
         });
     },
-    addToCart({commit}, item) {
-      commit('setCart', item);
-    }
-  }
+    addToCart ({commit}, item) {
+      commit ('setCart', item);
+    },
+  },
 });
