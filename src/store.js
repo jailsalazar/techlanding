@@ -36,9 +36,14 @@ export default new Vuex.Store ({
       state.cart.map (cartItem => {
         if (cartItem.id === item.id) {
           cartItem.quantity--;
-        }
-      });
-    },
+          if(cartItem.quantity === 0) {
+            state.cart = state.cart.filter(product => {
+              return product.id != item.id;
+            });
+          }
+          }
+        });
+    }
   },
   actions: {
     getProducts({commit}) {
