@@ -16,14 +16,28 @@ export default new Vuex.Store ({
     setCart (state, item) {
       if (!state.cart.some (cartItem => cartItem.id === item.id)) {
         item.quantity++;
-        state.cart.push(item);
+        state.cart.push (item);
       } else {
         state.cart.map (cartItem => {
-          if(cartItem.id === item.id) {
-           cartItem.quantity++;
+          if (cartItem.id === item.id) {
+            cartItem.quantity++;
           }
         });
       }
+    },
+    add (state, item) {
+      state.cart.map (cartItem => {
+        if (cartItem.id === item.id) {
+          cartItem.quantity++;
+        }
+      });
+    },
+    subtract (state, item) {
+      state.cart.map (cartItem => {
+        if (cartItem.id === item.id) {
+          cartItem.quantity--;
+        }
+      });
     },
   },
   actions: {
@@ -38,6 +52,12 @@ export default new Vuex.Store ({
     },
     addToCart ({commit}, item) {
       commit ('setCart', item);
+    },
+    decrement ({commit}, item) {
+      commit ('subtract', item);
+    },
+    increment ({commit}, item) {
+      commit ('add', item);
     },
   },
 });

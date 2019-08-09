@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <div v-if="cart.length">
+    <div v-if="totalItems !== 0">
       <v-layout column>
         <v-flex lg12>
           <v-card flat>
@@ -30,7 +30,13 @@
               <v-flex style="padding-top: 70px;" lg5>
                 <v-layout row>
                   <v-flex lg1>
-                    <v-btn class="plus-minus" @click="decrement(item)" depressed small>-</v-btn>
+                    <v-btn
+                      class="plus-minus"
+                      @click="decrement(item)"
+                      depressed
+                      small
+                      :disabled="item.quantity === 0 ? true: false "
+                    >-</v-btn>
                   </v-flex>
                   <v-flex lg1>
                     <v-card-text class="quantity" v-model="item.quantity">{{ item.quantity }}</v-card-text>
@@ -56,7 +62,14 @@
         </v-flex>
 
         <v-flex style="padding-top: 30px; align-self: center;">
-          <v-btn depressed large dark style="background-color: #ef6008; font-weight: 700;" min-height="57px" min-width="317px">CHECKOUT</v-btn>
+          <v-btn
+            depressed
+            large
+            dark
+            style="background-color: #ef6008; font-weight: 700;"
+            min-height="57px"
+            min-width="317px"
+          >CHECKOUT</v-btn>
         </v-flex>
       </v-layout>
     </div>
@@ -100,12 +113,10 @@ export default {
   },
   methods: {
     increment(item) {
-      item.quantity++;
-      this.$store.dispatch("addToCart", item);
+      this.$store.dispatch("increment", item);
     },
     decrement(item) {
-      item.quantity--;
-      this.$store.dispatch("addToCart", item);
+      this.$store.dispatch("decrement", item);
     },
     itemTotal(item) {
       let total = item.quantity * item.price;
